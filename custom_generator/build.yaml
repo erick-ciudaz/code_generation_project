@@ -1,0 +1,20 @@
+# See https://pub.dev/packages/build_config
+
+# targets:
+#   $default:
+#     builders:
+#       contextual_logging_generator|contextual_logging_generator:
+#         generate_for:
+#           - '**/*.dart'
+#         enabled: true
+
+
+
+builders:
+  custom_generator:
+    import: "package:custom_generator/custom_generator.dart"
+    builder_factories: ["customBuilder"]
+    build_extensions: { r'$package$': [ ".custom.gen.temp" ] }
+    auto_apply: dependents
+    build_to: source
+
