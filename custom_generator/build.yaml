@@ -1,12 +1,13 @@
 # See https://pub.dev/packages/build_config
 
-# targets:
-#   $default:
-#     builders:
-#       contextual_logging_generator|contextual_logging_generator:
-#         generate_for:
-#           - '**/*.dart'
-#         enabled: true
+targets:
+  $default:
+    sources:
+      - config/**
+      - routes/**
+      - lib/**
+      - $package$
+      - pubspec.*
 
 
 
