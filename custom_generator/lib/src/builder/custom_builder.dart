@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:build/build.dart';
 import 'package:glob/glob.dart';
 
@@ -9,9 +8,9 @@ class CustomBuilder extends Builder {
   @override
   FutureOr<void> build(BuildStep buildStep) async {
     await _findFilesAndBuild(buildStep);
-    print("-- ASSETS FOUND");
+    log.info("1.- ASSETS FOUND");
     await writeInFile(buildStep);
-    print("-- FILE WRITE SUCCESSFULL");
+    log.info("2.- FILE WRITE SUCCESSFULL");
   }
 
   @override
@@ -21,7 +20,7 @@ class CustomBuilder extends Builder {
 
   _findFilesAndBuild(BuildStep buildStep) async {
     await for (var fileAsset in buildStep.findAssets(_scope)) {
-      print("CUSTOM BUILDER: file uri ${fileAsset.uri.toString()}");
+      log.info("CUSTOM BUILDER: file path ${fileAsset.path}");
       await _buildForFile(fileAsset, buildStep);
     }
   }
